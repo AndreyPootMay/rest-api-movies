@@ -17,7 +17,7 @@ ENGINE=InnoDB
 DESCRIBE movies;
 
 ## Datos de prueba
-INSERT INTO movies (name, year,director, genre, principal_actor) values 
+INSERT INTO movies (name, year, director, genre, principal_actor) values 
   ('Hellboy', 2004 , 'Del Toro', 'Action', 'Ron Perlman'),
   ('Titanic', 1997 , 'James Cameron', 'Drama', 'Leonardo DiCaprio'),
   ('Hooligans', 2008 , 'Green Street Hooligans', 'Action', 'Charlie Hunnam');

@@ -54,7 +54,7 @@ Para usar la API se debe de utilizar POSTMAN, para ingresar la ruta y el método
 _GET_ http://localhost:3000/
 
 #### Seleccionar una película en específico:
-_GET_ http://localhost:3000/_:id_ (Sin los dos puntos)
+_GET_ http://localhost:3000/:id (Sin los dos puntos)
 
 Ejemplo: http://localhost:3000/3 (Nos devolverá la película con el id 3).
 
@@ -84,7 +84,7 @@ _DELETE_ http://localhost:3000/:id (Sin los dos puntos)
 Ejemplo: http://localhost:3000/2 (Borrará la película con el id _2_).
 
 #### Insertar una película (Nombre y Año)
-POST http://localhost:3000/
+_POST_ http://localhost:3000/
 
 Dentro de postman debe de añadirse en **"raw"** los siguientes parámetros vía JSON:
 
@@ -104,11 +104,11 @@ Dentro de postman deben de añadirse en **"raw"** los siguientes parámetros ví
 ```
 {
 	"id": 3,
-	"name": "Nueva Película",
+	"name": "Película Actualizada",
 	"year": "Año de la Película"
 }
 ```
-El id del JSON debe de coincidir con el de la ruta.
+El "id" del JSON debe de coincidir con el de la ruta.
 
 
 Para consumir la api debe de subirse a un servicio como HEROKU, GITHUB-PAGES, DigitalOcean étc.
