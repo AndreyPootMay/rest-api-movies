@@ -5,9 +5,9 @@ const mysqlConnection  = require('../database.js');
 
 /**
  * Consulto todas las películas
- * @param  {[type]} '/'   [description]
- * @param  {[type]} (req, res)          [description]
- * @return {[type]}       [description]
+ * @param  {[type]} '/'   [Ruta hacia donde apuntamos la url]
+ * @param  {[type]} (req, res)
+ * @return {[type]}       [Regresa un objeto en JSON que contiene todas las películas]
  */
 router.get('/', (req, res) => {
   mysqlConnection.query('SELECT * FROM movies', (err, rows, fields) => {
@@ -21,9 +21,9 @@ router.get('/', (req, res) => {
 
 /**
  * Consulto una película en específico
- * @param  {[type]} '/:id' [description]
- * @param  {[type]} (req,  res)          [description]
- * @return {[type]}        [description]
+ * @param  {[type]} '/:id' [Ruta hacia donde apuntamos la url]
+ * @param  {[type]} (req,  res)
+ * @return {[type]}        [Regresa un registro que sea del id que pedimos]
  */
 router.get('/:id', (req, res) => {
   const { id } = req.params; 
@@ -39,9 +39,9 @@ router.get('/:id', (req, res) => {
 
 /**
  * Consulto una película por su nombre
- * @param  {[type]} '/:name' [description]
- * @param  {[type]} (req,  res)          [description]
- * @return {[type]}        [description]
+ * @param  {[type]} '/:name' [Ruta hacia donde apuntamos la url]
+ * @param  {[type]} (req,  res)
+ * @return {[type]}        [Regresa un objeto en JSON con todas las películas con ese nombre o parecido]
  */
 router.get('/movie/:name', (req, res) => {
   const { name } = req.params; 
@@ -55,10 +55,10 @@ router.get('/movie/:name', (req, res) => {
 });
 
 /**
- * Consulto una película por su actor
- * @param  {[type]} '/:name' [description]
- * @param  {[type]} (req,  res)          [description]
- * @return {[type]}        [description]
+ * Consulto una película por su actor principal
+ * @param  {[type]} '/:name' [Ruta hacia donde apuntamos la url]
+ * @param  {[type]} (req,  res)
+ * @return {[type]}        [Regresa un objeto en JSON con totas las películas con ese actor]
  */
 router.get('/actor/:name', (req, res) => {
   const { name } = req.params; 
@@ -73,9 +73,9 @@ router.get('/actor/:name', (req, res) => {
 
 /**
  * Consulto una película por su género
- * @param  {[type]} '/:genre' [description]
- * @param  {[type]} (req,  res)          [description]
- * @return {[type]}        [description]
+ * @param  {[type]} '/:genre' [Ruta hacia donde apunta la URL]
+ * @param  {[type]} (req,  res)
+ * @return {[type]}        [Regresa un objeto en JSON con todos los filmes con ese género]
  */
 router.get('/genre/:genre', (req, res) => {
   const { genre } = req.params; 
@@ -90,9 +90,9 @@ router.get('/genre/:genre', (req, res) => {
 
 /**
  * Consulto una película por su director
- * @param  {[type]} '/:director' [description]
- * @param  {[type]} (req,  res)          [description]
- * @return {[type]}        [description]
+ * @param  {[type]} '/:director' [Ruta hacia donde apunta la URL]
+ * @param  {[type]} (req,  res)
+ * @return {[type]}        [Regresa un objeto en JSON con todos los filmes de ese director]
  */
 router.get('/director/:director', (req, res) => {
   const { director } = req.params; 
@@ -107,9 +107,9 @@ router.get('/director/:director', (req, res) => {
 
 /**
  * Elimino una película en específico
- * @param  {[type]} '/:id' [description]
- * @param  {[type]} (req,  res)          [description]
- * @return {[type]}        [description]
+ * @param  {[type]} '/:id' [Ruta hacia donde apunta la URL]
+ * @param  {[type]} (req,  res)
+ * @return {[type]}        [Si todo funcionó bien regresa un status en JSON sino se imprime un error en consola]
  */
 router.delete('/:id', (req, res) => {
   const { id } = req.params;
@@ -125,8 +125,9 @@ router.delete('/:id', (req, res) => {
 /**
  * INSERTA UNA PELÍCULA
  * @param  {[String]} '/'   [Ruta del método, en este caso es POST]
- * @param  {[type]} (req, res)          [description]
- * @return {[type]}       [Enviar como parametro de id el 0 dentro del objeto JSON]
+ * @body_params {id, name, year} [Enviar en formulario raw y como objeto JSON]
+ * @param  {[type]} (req, res)
+ * @return {[type]} [Enviar como parametro de id el 0 dentro del objeto JSON]
  */
 router.post('/', (req, res) => {
   const {id, name, year} = req.body;
@@ -145,6 +146,7 @@ router.post('/', (req, res) => {
 /**
  * Actualiza una película
  * @param  {[String]} '/:id' [Ruta del método, en este caso PUT]
+ * @body_params {name, year} [Enviar en formulario raw y como objeto JSON]
  * @param  {[type]} (req,  res)          [description]
  * @return {[type]}        [description]
  */
